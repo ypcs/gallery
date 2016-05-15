@@ -10,7 +10,7 @@ class ItemAdmin(admin.ModelAdmin):
 
 class ShareAdmin(admin.ModelAdmin):
     list_filter = ('content_type',)
-    list_display = ('content_object', 'uuid', 'owner',)
+    list_display = ('content_object', 'uuid', 'owner', 'status',)
 
 admin.site.register(Collection, CollectionAdmin)
 admin.site.register(Item, ItemAdmin)

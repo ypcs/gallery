@@ -78,6 +78,8 @@ class Share(models.Model):
     uuid = UUIDField()
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
 
+    status = models.CharField(max_length=1, choices=STATUSES, default=STATUS_ACTIVE)
+
     created = CreationDateTimeField()
     modified = ModificationDateTimeField()
 
