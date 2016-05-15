@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Collection, Item
+from .models import Collection, Item, Share
 
 class CollectionAdmin(admin.ModelAdmin):
     list_filter = ('status',)
@@ -8,5 +8,9 @@ class CollectionAdmin(admin.ModelAdmin):
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('content', 'uuid', 'owner',)
 
+class ShareAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Collection, CollectionAdmin)
 admin.site.register(Item, ItemAdmin)
+admin.site.register(Share, ShareAdmin)
