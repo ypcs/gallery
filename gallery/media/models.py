@@ -80,7 +80,8 @@ class Share(models.Model):
     created = CreationDateTimeField()
     modified = ModificationDateTimeField()
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    limit = models.Q(app_label='media', model='collection') | models.Q(app_label='media', model='item')
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to=limit)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
