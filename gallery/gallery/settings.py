@@ -130,6 +130,14 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'docroot/static')
 
+# django-storages
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
+
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#AWS_S3_CUSTOM_DOMAIN = ""
+
 try:
     import dj_database_url
     db_from_env = dj_database_url.config(conn_max_age=500)
