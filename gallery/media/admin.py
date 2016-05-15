@@ -6,7 +6,7 @@ class CollectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'uuid', 'owner', 'status',)
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('content', 'uuid', 'owner',)
+    list_display = ('uuid', 'owner',)
 
 class ShareAdmin(admin.ModelAdmin):
     list_filter = ('content_type', 'status',)
