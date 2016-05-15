@@ -137,6 +137,8 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
 
 AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET', None)
 AWS_CF_ID = os.environ.get('AWS_CF_ID', None)
+AWS_KEYPAIR_ID = os.environ.get('AWS_KEYPAIR_ID', None)
+AWS_KEYPAIR_ID = os.environ.get('AWS_KEYPAIR_PRIVATE_KEY', None)
 
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #AWS_S3_CUSTOM_DOMAIN = ""
