@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'media',
 
     'storages',
+    'taggit',
+    'taggit_machinetags',
 
     'django.contrib.admin',
     'django.contrib.auth',
