@@ -1,3 +1,4 @@
+boto==2.40.0
 dj-database-url==0.4.1
 Django==1.9.6
 django-extensions==1.6.7
