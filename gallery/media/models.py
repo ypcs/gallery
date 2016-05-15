@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 
 from django_extensions.db.fields import CreationDateTimeField, ModificationDateTimeField, UUIDField
 
@@ -14,6 +15,17 @@ STATUSES = (
     (STATUS_INACTIVE, _('Inactive')),
     (STATUS_REMOVED, _('Removed')),
 )
+
+def get_upload_path(instance, filename):
+    now = timezone.now()
+    return "uploads/{}/{}/{}/{}/{}/{}".format(
+            instance.owner,
+            now.year,
+            now.month,
+            now.day,
+            "{}{}{}.{}".format(now.hour, now.minute, now.second, now.microsecond),
+            filename,
+            )
 
 class Collection(models.Model):
     uuid = UUIDField()
@@ -34,3 +46,15 @@ class Collection(models.Model):
     def has_access(self, user):
         """Checks if user has access to this collection"""
         raise NotImplementedError
+
+class Item(models.Model):
+    uuid = UUIDField()
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    created = CreationDateTimeField()
+    modified = ModificationDateTimeField()
+
+    content = models.FileField(upload_to=get_upload_path)
+
+    def __str__(self):
+        return "{}".format(self.uuid)
