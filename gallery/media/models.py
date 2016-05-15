@@ -20,12 +20,13 @@ STATUSES = (
 
 def get_upload_path(instance, filename):
     now = timezone.now()
-    return "uploads/{}/{}/{}/{}/{}/{}".format(
+    return "uploads/{}/{}/{}/{}/{}/{}/{}".format(
             instance.owner,
             now.year,
             now.month,
             now.day,
             "{}{}{}.{}".format(now.hour, now.minute, now.second, now.microsecond),
+            instance.uuid,
             filename,
             )
 
