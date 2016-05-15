@@ -6,7 +6,7 @@ class CollectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'uuid', 'owner', 'status',)
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('uuid', 'owner',)
+    list_display = ('content', 'uuid', 'owner',)
 
 admin.site.register(Collection, CollectionAdmin)
 admin.site.register(Item, ItemAdmin)
