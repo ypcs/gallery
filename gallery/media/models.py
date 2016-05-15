@@ -9,6 +9,9 @@ class Collection(models.Model):
 
     title = models.CharField(max_length=255)
 
+    created = CreationDateTimeField()
+    modified = ModificationDateTimeField()
+
     class Meta:
         unique_together = (('owner', 'title',))
 
