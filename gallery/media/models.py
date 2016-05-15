@@ -68,6 +68,11 @@ class Item(models.Model):
     def __str__(self):
         return "{}".format(self.uuid)
 
+    def create_share(self, owner):
+        """Creates new share for Item"""
+        share = self.shares.create(owner=owner)
+        return share
+
 class Share(models.Model):
     uuid = UUIDField()
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
