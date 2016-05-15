@@ -70,7 +70,7 @@ class Item(models.Model):
 
 class Share(models.Model):
     uuid = UUIDField()
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     created = CreationDateTimeField()
     modified = ModificationDateTimeField()
