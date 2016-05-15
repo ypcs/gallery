@@ -135,6 +135,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
 
+AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET', None)
+AWS_CF_ID = os.environ.get('AWS_CF_ID', None)
+
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #AWS_S3_CUSTOM_DOMAIN = ""
 
