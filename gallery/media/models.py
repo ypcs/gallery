@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils import timezone
@@ -39,6 +39,8 @@ class Collection(models.Model):
     created = CreationDateTimeField()
     modified = ModificationDateTimeField()
 
+    shares = GenericRelation('media.Share')
+
     class Meta:
         unique_together = (('owner', 'title',))
 
@@ -60,6 +62,8 @@ class Item(models.Model):
     content_meta = models.TextField(blank=True, null=True)
 
     collections = models.ManyToManyField('media.Collection')
+
+    shares = GenericRelation('media.Share')
 
     def __str__(self):
         return "{}".format(self.uuid)
