@@ -6,3 +6,11 @@ from django_extensions.db.fields import CreationDateTimeField, ModificationDateT
 class Collection(models.Model):
     uuid = UUIDField()
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    title = models.CharField(max_length=255)
+
+    class Meta:
+        unique_together = (('owner', 'title',))
+
+    def __str__(self):
+        return "{}".format(self.title)
