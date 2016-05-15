@@ -9,7 +9,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = ('content', 'uuid', 'owner',)
 
 class ShareAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('content_object', 'uuid', 'owner',)
 
 admin.site.register(Collection, CollectionAdmin)
 admin.site.register(Item, ItemAdmin)
