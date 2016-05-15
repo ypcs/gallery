@@ -136,6 +136,7 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
 
 AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET', None)
+AWS_STORAGE_BUCKET_NAME = AWS_S3_BUCKET
 AWS_CF_ID = os.environ.get('AWS_CF_ID', None)
 AWS_KEYPAIR_ID = os.environ.get('AWS_KEYPAIR_ID', None)
 AWS_KEYPAIR_ID = os.environ.get('AWS_KEYPAIR_PRIVATE_KEY', None)
