@@ -30,3 +30,7 @@ class Collection(models.Model):
 
     def __str__(self):
         return "{}".format(self.title)
+
+    def has_access(self, user):
+        """Checks if user has access to this collection"""
+        raise NotImplementedError
