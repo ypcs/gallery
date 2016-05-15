@@ -5,6 +5,7 @@ from django.db import models
 from django.utils import timezone
 
 from django_extensions.db.fields import CreationDateTimeField, ModificationDateTimeField, UUIDField
+from taggit_machinetags.managers import MachineTaggableManager
 
 _ = lambda x: x
 
@@ -41,6 +42,7 @@ class Collection(models.Model):
     modified = ModificationDateTimeField()
 
     shares = GenericRelation('media.Share')
+    tags = MachineTaggableManager()
 
     class Meta:
         unique_together = (('owner', 'title',))
@@ -65,6 +67,7 @@ class Item(models.Model):
     collections = models.ManyToManyField('media.Collection')
 
     shares = GenericRelation('media.Share')
+    tags = MachineTaggableManager()
 
     def __str__(self):
         return "{}".format(self.uuid)
