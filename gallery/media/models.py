@@ -56,5 +56,7 @@ class Item(models.Model):
 
     content = models.FileField(upload_to=get_upload_path)
 
+    collections = models.ManyToManyField('media.Collection')
+
     def __str__(self):
         return "{}".format(self.uuid)
