@@ -55,6 +55,7 @@ class Item(models.Model):
     modified = ModificationDateTimeField()
 
     content = models.FileField(upload_to=get_upload_path)
+    content_meta = models.TextField(blank=True, null=True)
 
     collections = models.ManyToManyField('media.Collection')
 
