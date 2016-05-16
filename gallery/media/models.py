@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 
@@ -61,6 +62,9 @@ class Collection(models.Model):
     def __str__(self):
         return "{}".format(self.title)
 
+    def get_absolute_url(self):
+        return reverse("media:collection", kwargs={'uuid': self.uuid,})
+
     def has_access(self, user):
         """Checks if user has access to this collection"""
         raise NotImplementedError
@@ -82,6 +86,9 @@ class Item(models.Model):
 
     def __str__(self):
         return "{}".format(self.uuid)
+
+    def get_absolute_url(self):
+        return reverse("media:item", kwargs={'uuid': self.uuid,})
 
     def create_share(self, owner):
         """Creates new share for Item"""
@@ -107,3 +114,6 @@ class Share(models.Model):
 
     def __str__(self):
         return "{}".format(self.uuid)
+
+    def get_absolute_url(self):
+        return reverse("media:share", kwargs={'uuid': uuid,})
