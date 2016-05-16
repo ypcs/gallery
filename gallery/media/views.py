@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
 
+from rest_framework import viewsets
+
 from .models import Collection, Item, Share
+from .serializers import CollectionSerializer
 
 class UUIDAsIdentifier(object):
     def get_object(self, *args, **kwargs):
@@ -10,6 +13,10 @@ class UUIDAsIdentifier(object):
 class CollectionView(UUIDAsIdentifier, DetailView):
     model = Collection
 collection = CollectionView.as_view()
+
+class CollectionViewSet(viewsets.ModelViewSet):
+    queryset = Collection.objects.all()
+    serializer_class = CollectionSerializer
 
 class ItemView(UUIDAsIdentifier, DetailView):
     model = Item
