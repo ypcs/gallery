@@ -95,7 +95,7 @@ class Share(models.Model):
     status = models.CharField(max_length=1, choices=STATUSES, default=STATUS_ACTIVE)
     share_type = models.CharField(max_length=1, choices=SHARE_TYPES, default=SHARE_WITH_LINK)
     password = models.CharField(max_length=255, blank=True, null=True)
-    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='users')
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='users', blank=True)
 
     created = CreationDateTimeField()
     modified = ModificationDateTimeField()
