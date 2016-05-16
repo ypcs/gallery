@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+from django.utils.crypto import get_random_string
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,8 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-from django.utils.crypto import get_random_string
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", get_random_string(50, "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"))
+SECRET_KEY_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
+SECRET_KEY_LENGTH = 50
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY",
+                            get_random_string(SECRET_KEY_LENGTH,
+                                              SECRET_KEY_CHARS))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DJANGO_DEBUG", False))
