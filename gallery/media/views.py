@@ -17,6 +17,7 @@ collection = CollectionView.as_view()
 class CollectionViewSet(viewsets.ModelViewSet):
     queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
+    lookup_field = 'uuid'
 
 class ItemView(UUIDAsIdentifier, DetailView):
     model = Item
