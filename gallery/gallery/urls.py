@@ -23,5 +23,6 @@ urlpatterns = [
 
     url(r'^', include('media.urls', namespace="media")),
 
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
 ]
