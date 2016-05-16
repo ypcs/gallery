@@ -19,6 +19,17 @@ STATUSES = (
     (STATUS_REMOVED, _('Removed')),
 )
 
+SHARE_PUBLIC = 'p'
+SHARE_WITH_LINK = 'l'
+SHARE_WITH_PASSWORD = 's'
+SHARE_WITH_ACCOUNT = 'a'
+SHARE_TYPES = (
+    (SHARE_PUBLIC, _('Public')),
+    (SHARE_WITH_LINK, _('With link')),
+    (SHARE_WITH_PASSWORD, _('With Password')),
+    (SHARE_WITH_ACCOUNT, _('With Account')),
+)
+
 def get_upload_path(instance, filename):
     now = timezone.now()
     return "uploads/{}/{}/{}/{}/{}/{}/{}".format(
@@ -82,6 +93,7 @@ class Share(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     status = models.CharField(max_length=1, choices=STATUSES, default=STATUS_ACTIVE)
+    share_type = models.CharField(max_length=1, choices=SHARE_TYPES, default=SHARE_WITH_LINK)
 
     created = CreationDateTimeField()
     modified = ModificationDateTimeField()
