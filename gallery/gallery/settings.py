@@ -151,6 +151,12 @@ AWS_KEYPAIR_ID = os.environ.get('AWS_KEYPAIR_PRIVATE_KEY', None)
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #AWS_S3_CUSTOM_DOMAIN = ""
 
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
+
 try:
     import dj_database_url
     db_from_env = dj_database_url.config(conn_max_age=500)
