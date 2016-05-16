@@ -1,1 +1,7 @@
-{{ object }}
+{% extends "media/base.html" %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+
+<img src="{{ object.content }}" alt="{{ object.uuid }}"/>
+{% endblock %}
