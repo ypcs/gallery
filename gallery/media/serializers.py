@@ -6,3 +6,9 @@ class CollectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Collection
         fields = ('uuid', 'owner', 'title', 'status',)
+
+class ItemSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    class Meta:
+        model = Item
+        fields = ('uuid', 'owner',)

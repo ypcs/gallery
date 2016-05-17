@@ -5,7 +5,7 @@ from rest_framework import viewsets
 
 from .models import Collection, Item, Share
 from .permissions import IsOwnerOrShared
-from .serializers import CollectionSerializer
+from .serializers import CollectionSerializer, ItemSerializer
 
 class UUIDAsIdentifier(object):
     def get_object(self, *args, **kwargs):
@@ -24,6 +24,12 @@ class CollectionViewSet(viewsets.ModelViewSet):
 class ItemView(UUIDAsIdentifier, DetailView):
     model = Item
 item = ItemView.as_view()
+
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    lookup_field = 'uuid'
+    permission_classes = (IsOwnerOrShared,)
 
 class ShareView(UUIDAsIdentifier, DetailView):
     model = Share

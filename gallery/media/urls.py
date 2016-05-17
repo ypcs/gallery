@@ -8,6 +8,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'collections', views.CollectionViewSet)
+router.register(r'items', views.ItemViewSet)
 
 uuid_pattern = r'(?P<uuid>[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})'
 
