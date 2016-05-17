@@ -18,9 +18,17 @@ from django.contrib import admin
 
 from django.views.generic import TemplateView
 
+from rest_framework import routers
+
+from .views import UserViewSet
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 
+    url(r'^', include(router.urls)),
     url(r'^', include('media.urls', namespace="media")),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
