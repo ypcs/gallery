@@ -4,4 +4,4 @@ from .models import Collection, Item, Share
 class CollectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Collection
-        fields = ('uuid', 'title', 'status',)
+        fields = ('uuid', 'owner', 'title', 'status',)
