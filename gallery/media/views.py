@@ -4,6 +4,7 @@ from django.views.generic import DetailView
 from rest_framework import viewsets
 
 from .models import Collection, Item, Share
+from .permissions import IsOwnerOrShared
 from .serializers import CollectionSerializer
 
 class UUIDAsIdentifier(object):
@@ -18,6 +19,7 @@ class CollectionViewSet(viewsets.ModelViewSet):
     queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
     lookup_field = 'uuid'
+    permission_classes = (IsOwnerOrShared,)
 
 class ItemView(UUIDAsIdentifier, DetailView):
     model = Item
