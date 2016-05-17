@@ -43,7 +43,19 @@ def get_upload_path(instance, filename):
             filename,
             )
 
-class Collection(models.Model):
+class HasAccessMixin(object):
+    def has_access(self, user):
+        """Checks if user has access to this object"""
+        if not hasattr(self, 'owner') or not hasattr(self, 'shares'):
+            return False
+        elif user == self.owner:
+            return True
+        elif self.shares.filter(users__in=[user]):
+            return True
+        return False
+
+
+class Collection(HasAccessMixin, models.Model):
     uuid = UUIDField()
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
 
@@ -65,11 +77,8 @@ class Collection(models.Model):
     def get_absolute_url(self):
         return reverse("media:collection", kwargs={'uuid': self.uuid,})
 
-    def has_access(self, user):
-        """Checks if user has access to this collection"""
-        raise NotImplementedError
 
-class Item(models.Model):
+class Item(HasAccessMixin, models.Model):
     uuid = UUIDField()
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
 
