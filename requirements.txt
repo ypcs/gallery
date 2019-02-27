@@ -1,6 +1,6 @@
 boto==2.40.0
 dj-database-url==0.4.1
-Django==1.9.6
+Django
 django-extensions==1.6.7
 django-storages==1.4.1
 django-taggit==0.18.3
